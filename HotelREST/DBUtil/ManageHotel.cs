@@ -10,7 +10,7 @@ namespace HotelREST.DBUtil
 	public class ManageHotel
 	{
 		//private string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=HotelDB1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-		private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		private string connectionString = @"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = HotelDB; Integrated Security = True; Connect Timeout = 30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 		private const string commandStringGetAll = "Select * from Hotel";
 
 		public List<Hotel> GetAllHotels()
