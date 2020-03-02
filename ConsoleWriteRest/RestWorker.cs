@@ -31,6 +31,7 @@ namespace ConsoleWriteRest
 
 		public async Task PrintAllHotelsAsync()
 		{
+			Console.WriteLine("\nFinding all Hotels...");
 			IList<Hotel> allHotels = new List<Hotel>();
 			allHotels = await GetAllHotelAsync();
 			foreach (Hotel hotel in allHotels)
@@ -41,6 +42,7 @@ namespace ConsoleWriteRest
 
 		public async Task PrintOneHotelAsync(int hotelNr)
 		{
+			Console.WriteLine("\nFinding one Hotel...");
 			Hotel hotel = new Hotel();
 			hotel = await GetOneHotelAsync(hotelNr);
 			Console.WriteLine(hotel.ToString());
@@ -48,6 +50,7 @@ namespace ConsoleWriteRest
 
 		public async Task CreateHotel(Hotel hotel)
 		{
+			Console.WriteLine("\nCreating a new Hotel...");
 			if (await CreateHotelAsync(hotel))
 			{
 				Console.WriteLine($"Hotel: {hotel.ToString()} created.");
@@ -60,6 +63,7 @@ namespace ConsoleWriteRest
 
 		public async Task UpdateHotel(int HotelNr, Hotel hotel)
 		{
+			Console.WriteLine("\nUpdating a Hotel...");
 			if (await UpdateHotelAsync(HotelNr, hotel))
 			{
 				Console.WriteLine($"Hotel: {hotel.ToString()} updated.");
@@ -70,8 +74,9 @@ namespace ConsoleWriteRest
 			}
 		}
 
-		public async Task<Hotel> DeleteHotel(int hotelNr)
+		public async Task DeleteHotel(int hotelNr)
 		{
+			Console.WriteLine("\nDeleting a Hotel...");
 			Hotel deletedHotel = await DeleteHotelAsync(hotelNr);
 			if (deletedHotel != null)
 			{
@@ -81,8 +86,6 @@ namespace ConsoleWriteRest
 			{
 				Console.WriteLine($"Hotel: {deletedHotel.ToString()} Not deleted.");
 			}
-
-			return null;
 		}
 
 		private string URI = "http://localhost:2708/api/Hotels/";

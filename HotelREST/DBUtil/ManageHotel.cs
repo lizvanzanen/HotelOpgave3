@@ -9,14 +9,13 @@ namespace HotelREST.DBUtil
 {
 	public class ManageHotel
 	{
-		private string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=HotelDB1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+		//private string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=HotelDB1;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+		private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 		private const string commandStringGetAll = "Select * from Hotel";
 
 		public List<Hotel> GetAllHotels()
 		{
 
-			Console.WriteLine("\nFinding all Hotels...");
 			List<Hotel> allHotels = new List<Hotel>();
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
@@ -37,7 +36,6 @@ namespace HotelREST.DBUtil
 
 		public Hotel GetHotelFromId(int hotelNr)
 		{
-			Console.WriteLine("\nFinding one Hotels...");
 			Hotel hotel = new Hotel();
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
@@ -59,7 +57,6 @@ namespace HotelREST.DBUtil
 
 		public bool CreateHotel(Hotel hotel)
 		{
-			Console.WriteLine("\nCreating a new Hotel...");
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
 				//if (GetHotelFromId(hotel.Hotel_No) == null)
@@ -79,7 +76,6 @@ namespace HotelREST.DBUtil
 		string commandStringUpdate = "UPDATE Hotel SET Name = @Name, Address = @Address WHERE Hotel_No = @HotelNr";
 		public bool UpdateHotel(Hotel hotel, int hotelNr)
 		{
-			Console.WriteLine("\nUpdating a Hotel...");
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
 				if (GetHotelFromId(hotelNr) != null)
@@ -100,7 +96,7 @@ namespace HotelREST.DBUtil
 
 		public Hotel DeleteHotel(int hotelNr)
 		{
-			Console.WriteLine("Deleting a Hotel...");
+			
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
 				Hotel hotel = GetHotelFromId(hotelNr);
